@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>わたしの推し都道府県</title>
+  <style>
+    svg path {
+      fill: #cccccc;
+      stroke: #333;
+      stroke-width: 0.5;
+      cursor: pointer;
+      transition: fill 0.2s;
+    }
+    svg path:hover {
+      fill: orange;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- SVG本体（説明やタイトルはSVG内に含まれるのでここには不要） -->
+  <object id="japanMap" type="image/svg+xml" data="map_with_links.svg" width="1000px"></object>
+
+  <script>
+    // 各都道府県に対応したCanvaリンク
+    const links = {
+      hokkaido: "https://minamisuna.my.canva.site/dagphbutlkq",
+      aomori: "https://minamisuna.my.canva.site/dagphf8p1vs",
+      iwate: "https://minamisuna.my.canva.site/dagpha717xe",
+      akita: "https://minamisuna.my.canva.site/dagphd5-9fk",
+      miyagi: "https://minamisuna.my.canva.site/dagphc6noiu",
+      yamagata: "https://minamisuna.my.canva.site/dagphjnh9dc",
+      fukushima: "https://minamisuna.my.canva.site/dagphelzssw",
+      tochigi: "https://minamisuna.my.canva.site/dagphin-le",
+      gunnma: "https://minamisuna.my.canva.site/dagphifnndm",
+      ibaraki: "https://minamisuna.my.canva.site/dagphh6a-eq",
+      saitama: "https://minamisuna.my.canva.site/dagphvrzrlq",
+      chiba: "https://minamisuna.my.canva.site/dagphvvndia",
+      tokyo: "https://minamisuna.my.canva.site/dagphrmwgce",
+      kanagawa: "https://minamisuna.my.canva.site/dagphbdvjdw",
+      niigata: "https://minamisuna.my.canva.site/dagphi9hklo",
+      nagano: "https://minamisuna.my.canva.site/dagphpz3nz8",
+      toyama: "https://minamisuna.my.canva.site/dagphe59m4o",
+      ishikawa: "https://minamisuna.my.canva.site/dagphi04nje",
+      yamanashi: "https://minamisuna.my.canva.site/dagphlb4szk",
+      shizuoka: "https://minamisuna.my.canva.site/dagphbype2w",
+      fukui: "https://minamisuna.my.canva.site/dagphaqhkxa",
+      gifu: "https://minamisuna.my.canva.site/dagphmj4qbo",
+      aichi: "https://minamisuna.my.canva.site/dagphsv2pau",
+      shiga: "https://minamisuna.my.canva.site/dagphswaycu",
+      mie: "https://minamisuna.my.canva.site/dagphbid5os",
+      kyoto: "https://minamisuna.my.canva.site/dagphvj7thm",
+      osaka: "https://minamisuna.my.canva.site/dagphwgkbv4",
+      hyogo: "https://minamisuna.my.canva.site/dagphqc7p5q",
+      nara: "https://minamisuna.my.canva.site/dagphcnpbou",
+      wakayama: "https://minamisuna.my.canva.site/dagphbrwmny",
+      tottori: "https://minamisuna.my.canva.site/dagphqtap5w",
+      okayama: "https://minamisuna.my.canva.site/dagphwfelji",
+      shimane: "https://minamisuna.my.canva.site/dagphtop5mq",
+      hiroshima: "https://minamisuna.my.canva.site/dagphy3p6nc",
+      yamaguchi: "https://minamisuna.my.canva.site/dagphvehzgy",
+      kagawa: "https://minamisuna.my.canva.site/dagphcz68ck",
+      tokushima: "https://minamisuna.my.canva.site/dagphcpxc-4",
+      kouchi: "https://minamisuna.my.canva.site/dagphdcvty8",
+      fukuoka: "https://minamisuna.my.canva.site/dagphtzlnuq",
+      oita: "https://minamisuna.my.canva.site/dagphxauiso",
+      saga: "https://minamisuna.my.canva.site/dagpha9ju9g",
+      nagasaki: "https://minamisuna.my.canva.site/dagphdywpns",
+      kumamoto: "https://minamisuna.my.canva.site/dagphcvumds",
+      miyazaki: "https://minamisuna.my.canva.site/dagphxt-jwe",
+      kagoshima: "https://minamisuna.my.canva.site/dagphw6ebou",
+      okinawa: "https://minamisuna.my.canva.site/dagphqu6ih0"
+    };
+
+    // SVG読み込み後にクリックイベントを設定
+    document.getElementById("japanMap").addEventListener("load", function () {
+      const svgDoc = this.contentDocument;
+      for (const [id, url] of Object.entries(links)) {
+        const element = svgDoc.getElementById(id);
+        if (element) {
+          element.addEventListener("click", () => {
+            window.open(url, "_blank");
+          });
+        } else {
+          console.warn(`⚠ ID "${id}" がSVGに見つかりませんでした`);
+        }
+      }
+    });
+  </script>
+</body>
+</html>
